@@ -1,0 +1,25 @@
+# --------------------------------------------------------------------------
+# SearXNG JSON API patch
+# --------------------------------------------------------------------------
+# By default SearXNG only outputs HTML, so the API returns 403 Forbidden.
+# After the first `docker compose up -d`, SearXNG writes a settings.yml into
+# ./searxng/settings.yml. Open that file and merge in the keys below, then run:
+#     docker compose restart searxng
+#
+# Verify it works:
+#     curl "http://localhost:8080/search?q=test&format=json" | head
+# You should get JSON (a "results" array), not HTML.
+# --------------------------------------------------------------------------
+
+search:
+  # add "json" alongside the existing "html"
+  formats:
+    - html
+    - json
+
+server:
+  # Replace with a long random string (e.g. `openssl rand -hex 32`)
+  secret_key: "CHANGE_ME_TO_A_LONG_RANDOM_STRING"
+  # SearXNG limits anonymous bursts; for your own low-volume tracker this is fine,
+  # but raising the limiter ceiling avoids occasional 429s during a full run:
+  limiter: false

@@ -1,0 +1,401 @@
+{
+  "name": "Jypra SEO Rank Tracker + Content Assist",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "triggerAtHour": 6
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -640,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const keywords = [{\"keyword\": \"managed cyber security services\", \"group\": \"Quick Win\", \"volume\": 590, \"difficulty\": \"8\", \"intent\": \"Informational\", \"target_page\": \"/managed-cyber-security-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"32\"}, {\"keyword\": \"managed cyber security\", \"group\": \"Quick Win\", \"volume\": 210, \"difficulty\": \"9\", \"intent\": \"Informational\", \"target_page\": \"/managed-cyber-security-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"32\"}, {\"keyword\": \"cyber security consulting\", \"group\": \"Quick Win\", \"volume\": 480, \"difficulty\": \"21\", \"intent\": \"Informational\", \"target_page\": \"/professional-services/\", \"top_company\": \"CyberCX\", \"top_position\": \"2\"}, {\"keyword\": \"cybersecurity assessment\", \"group\": \"Quick Win\", \"volume\": 90, \"difficulty\": \"15\", \"intent\": \"Commercial\", \"target_page\": \"/professional-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"2\"}, {\"keyword\": \"cyber security management services\", \"group\": \"Quick Win\", \"volume\": 140, \"difficulty\": \"19\", \"intent\": \"Informational\", \"target_page\": \"/managed-cyber-security-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"35\"}, {\"keyword\": \"cyber security consulting services\", \"group\": \"Quick Win\", \"volume\": 210, \"difficulty\": \"23\", \"intent\": \"Commercial\", \"target_page\": \"/professional-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"77\"}, {\"keyword\": \"cyber security providers\", \"group\": \"Quick Win\", \"volume\": 110, \"difficulty\": \"23\", \"intent\": \"Commercial\", \"target_page\": \"/professional-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"5\"}, {\"keyword\": \"cyber security services providers\", \"group\": \"Quick Win\", \"volume\": 90, \"difficulty\": \"24\", \"intent\": \"Commercial\", \"target_page\": \"/professional-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"3\"}, {\"keyword\": \"cyber security solution providers\", \"group\": \"Quick Win\", \"volume\": 140, \"difficulty\": \"29\", \"intent\": \"Informational\", \"target_page\": \"/australia-cyber-security/\", \"top_company\": \"Tesserent\", \"top_position\": \"3\"}, {\"keyword\": \"cyber security solutions\", \"group\": \"Quick Win\", \"volume\": 480, \"difficulty\": \"30\", \"intent\": \"Informational\", \"target_page\": \"/australia-cyber-security/\", \"top_company\": \"Tesserent\", \"top_position\": \"17\"}, {\"keyword\": \"network security solutions\", \"group\": \"Quick Win\", \"volume\": 260, \"difficulty\": \"27\", \"intent\": \"Informational\", \"target_page\": \"/professional-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"36\"}, {\"keyword\": \"security consulting\", \"group\": \"Quick Win\", \"volume\": 260, \"difficulty\": \"20\", \"intent\": \"Commercial\", \"target_page\": \"/professional-services/\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"26\"}, {\"keyword\": \"cybersecurity services\", \"group\": \"Quick Win\", \"volume\": 1000, \"difficulty\": \"26\", \"intent\": \"Informational\", \"target_page\": \"/professional-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"3\"}, {\"keyword\": \"cloud security consulting\", \"group\": \"Quick Win\", \"volume\": 90, \"difficulty\": \"15\", \"intent\": \"Informational\", \"target_page\": \"/professional-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"25\"}, {\"keyword\": \"vulnerability assessment services\", \"group\": \"Quick Win\", \"volume\": 90, \"difficulty\": \"22\", \"intent\": \"Informational\", \"target_page\": \"/professional-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"29\"}, {\"keyword\": \"security consulting services\", \"group\": \"Quick Win\", \"volume\": 90, \"difficulty\": \"23\", \"intent\": \"Commercial\", \"target_page\": \"/professional-services/\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"26\"}, {\"keyword\": \"it security services\", \"group\": \"Quick Win\", \"volume\": 320, \"difficulty\": \"35\", \"intent\": \"Commercial\", \"target_page\": \"/professional-services/\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"26\"}, {\"keyword\": \"managed cyber security services (gap)\", \"group\": \"Quick Win\", \"volume\": 880, \"difficulty\": \"16\", \"intent\": \"Informational\", \"target_page\": \"/managed-cyber-security-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"32\"}, {\"keyword\": \"cybersecurity services\", \"group\": \"Commercial\", \"volume\": 480, \"difficulty\": \"39\", \"intent\": \"Commercial\", \"target_page\": \"/professional-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"3\"}, {\"keyword\": \"cyber security services company\", \"group\": \"Commercial\", \"volume\": 260, \"difficulty\": \"61\", \"intent\": \"Commercial\", \"target_page\": \"/professional-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"2\"}, {\"keyword\": \"cyber security firms australia\", \"group\": \"Commercial\", \"volume\": 390, \"difficulty\": \"38\", \"intent\": \"Commercial\", \"target_page\": \"Homepage\", \"top_company\": \"Tesserent\", \"top_position\": \"2\"}, {\"keyword\": \"it security companies\", \"group\": \"Commercial\", \"volume\": 1300, \"difficulty\": \"28\", \"intent\": \"Commercial\", \"target_page\": \"Homepage\", \"top_company\": \"Tesserent\", \"top_position\": \"5\"}, {\"keyword\": \"it security services company\", \"group\": \"Commercial\", \"volume\": 90, \"difficulty\": \"59\", \"intent\": \"Commercial\", \"target_page\": \"Homepage\", \"top_company\": \"Tesserent\", \"top_position\": \"2\"}, {\"keyword\": \"managed security service providers\", \"group\": \"Commercial\", \"volume\": 720, \"difficulty\": \"37\", \"intent\": \"Informational\", \"target_page\": \"/managed-cyber-security-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"85\"}, {\"keyword\": \"cyber security specialists\", \"group\": \"Commercial\", \"volume\": 90, \"difficulty\": \"38\", \"intent\": \"Commercial\", \"target_page\": \"/professional-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"48\"}, {\"keyword\": \"cyber security companies australia\", \"group\": \"Commercial\", \"volume\": 320, \"difficulty\": \"43\", \"intent\": \"Informational\", \"target_page\": \"Homepage\", \"top_company\": \"Tesserent\", \"top_position\": \"3\"}, {\"keyword\": \"cybersecurity companies\", \"group\": \"Commercial\", \"volume\": 1000, \"difficulty\": \"29\", \"intent\": \"Commercial\", \"target_page\": \"Homepage\", \"top_company\": \"Tesserent\", \"top_position\": \"2\"}, {\"keyword\": \"cyber security solutions australia\", \"group\": \"Commercial\", \"volume\": 110, \"difficulty\": \"57\", \"intent\": \"Commercial\", \"target_page\": \"Homepage\", \"top_company\": \"Tesserent\", \"top_position\": \"3\"}, {\"keyword\": \"cybersecurity software service near me\", \"group\": \"Commercial\", \"volume\": 170, \"difficulty\": \"29\", \"intent\": \"Transactional\", \"target_page\": \"Homepage\", \"top_company\": \"Tesserent\", \"top_position\": \"2\"}, {\"keyword\": \"enterprise cyber security\", \"group\": \"Commercial\", \"volume\": 110, \"difficulty\": \"31\", \"intent\": \"Commercial\", \"target_page\": \"/professional-services/\", \"top_company\": \"Tesserent\", \"top_position\": \"75\"}, {\"keyword\": \"it security solutions\", \"group\": \"Commercial\", \"volume\": 260, \"difficulty\": \"36\", \"intent\": \"Informational\", \"target_page\": \"/professional-services/\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"26\"}, {\"keyword\": \"cyber security expert\", \"group\": \"Commercial\", \"volume\": 140, \"difficulty\": \"39\", \"intent\": \"Informational\", \"target_page\": \"/our-team/\", \"top_company\": \"CyberCX\", \"top_position\": \"2\"}, {\"keyword\": \"cyber security specialist\", \"group\": \"Commercial\", \"volume\": 210, \"difficulty\": \"25\", \"intent\": \"Informational\", \"target_page\": \"/our-team/\", \"top_company\": \"CyberCX\", \"top_position\": \"2\"}, {\"keyword\": \"it security brisbane\", \"group\": \"Local SEO\", \"volume\": 140, \"difficulty\": \"27\", \"intent\": \"Commercial\", \"target_page\": \"Homepage\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"26\"}, {\"keyword\": \"cyber security companies brisbane\", \"group\": \"Local SEO\", \"volume\": 140, \"difficulty\": \"31\", \"intent\": \"Commercial\", \"target_page\": \"Homepage\", \"top_company\": \"Tesserent\", \"top_position\": \"12\"}, {\"keyword\": \"cyber security sydney\", \"group\": \"Local SEO\", \"volume\": 390, \"difficulty\": \"39\", \"intent\": \"Commercial\", \"target_page\": \"Homepage\", \"top_company\": \"CyberCX\", \"top_position\": \"2\"}, {\"keyword\": \"cyber security services melbourne\", \"group\": \"Local SEO\", \"volume\": 170, \"difficulty\": \"29\", \"intent\": \"Commercial\", \"target_page\": \"Homepage\", \"top_company\": \"Tesserent\", \"top_position\": \"10\"}, {\"keyword\": \"cyber security services in australia\", \"group\": \"Local SEO\", \"volume\": 90, \"difficulty\": \"35\", \"intent\": \"Commercial\", \"target_page\": \"Homepage\", \"top_company\": \"Tesserent\", \"top_position\": \"3\"}, {\"keyword\": \"cybersecurity adelaide\", \"group\": \"Local SEO\", \"volume\": 90, \"difficulty\": \"38\", \"intent\": \"Commercial\", \"target_page\": \"Homepage\", \"top_company\": \"Tesserent\", \"top_position\": \"12\"}, {\"keyword\": \"cyber security companies melbourne\", \"group\": \"Local SEO\", \"volume\": 170, \"difficulty\": \"32\", \"intent\": \"Commercial\", \"target_page\": \"Homepage\", \"top_company\": \"Tesserent\", \"top_position\": \"9\"}, {\"keyword\": \"penetration testing\", \"group\": \"Informational/Content\", \"volume\": 6600, \"difficulty\": \"52\", \"intent\": \"Informational\", \"target_page\": \"New service page\", \"top_company\": \"Tesserent\", \"top_position\": \"19\"}, {\"keyword\": \"malware\", \"group\": \"Informational/Content\", \"volume\": 4400, \"difficulty\": \"59\", \"intent\": \"Informational\", \"target_page\": \"Blog post\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"16\"}, {\"keyword\": \"SOC (security operations centre)\", \"group\": \"Informational/Content\", \"volume\": 3600, \"difficulty\": \"43\", \"intent\": \"Informational\", \"target_page\": \"New service page\", \"top_company\": \"Tesserent\", \"top_position\": \"16\"}, {\"keyword\": \"multi factor authentication\", \"group\": \"Informational/Content\", \"volume\": 1900, \"difficulty\": \"47\", \"intent\": \"Informational\", \"target_page\": \"Blog/Guide\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"45\"}, {\"keyword\": \"network security\", \"group\": \"Informational/Content\", \"volume\": 1000, \"difficulty\": \"56\", \"intent\": \"Informational\", \"target_page\": \"New service page\", \"top_company\": \"Tesserent\", \"top_position\": \"36\"}, {\"keyword\": \"phishing attacks\", \"group\": \"Informational/Content\", \"volume\": 210, \"difficulty\": \"78\", \"intent\": \"Informational\", \"target_page\": \"Blog post\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"59\"}, {\"keyword\": \"what is phishing email\", \"group\": \"Informational/Content\", \"volume\": 320, \"difficulty\": \"35\", \"intent\": \"Informational\", \"target_page\": \"Blog post\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"49\"}, {\"keyword\": \"email security\", \"group\": \"Informational/Content\", \"volume\": 260, \"difficulty\": \"44\", \"intent\": \"Informational\", \"target_page\": \"New service page\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"38\"}, {\"keyword\": \"website security\", \"group\": \"Informational/Content\", \"volume\": 260, \"difficulty\": \"42\", \"intent\": \"Informational\", \"target_page\": \"Blog/Guide\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"43\"}, {\"keyword\": \"what is malware\", \"group\": \"Informational/Content\", \"volume\": 1300, \"difficulty\": \"60\", \"intent\": \"Informational\", \"target_page\": \"Blog post\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"49\"}, {\"keyword\": \"cybersecurity threats\", \"group\": \"Informational/Content\", \"volume\": 170, \"difficulty\": \"62\", \"intent\": \"Informational\", \"target_page\": \"Blog/Guide\", \"top_company\": \"Tesserent\", \"top_position\": \"2\"}, {\"keyword\": \"vishing\", \"group\": \"Informational/Content\", \"volume\": 880, \"difficulty\": \"36\", \"intent\": \"Informational\", \"target_page\": \"Blog post\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"5\"}, {\"keyword\": \"spear phishing\", \"group\": \"Informational/Content\", \"volume\": 720, \"difficulty\": \"46\", \"intent\": \"Informational\", \"target_page\": \"Blog post\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"17\"}, {\"keyword\": \"privileged access management\", \"group\": \"Informational/Content\", \"volume\": 880, \"difficulty\": \"44\", \"intent\": \"Informational\", \"target_page\": \"Blog/Guide\", \"top_company\": \"Tesserent\", \"top_position\": \"70\"}, {\"keyword\": \"OT cyber security\", \"group\": \"Informational/Content\", \"volume\": 720, \"difficulty\": \"32\", \"intent\": \"Informational\", \"target_page\": \"Blog/Guide\", \"top_company\": \"Tesserent\", \"top_position\": \"33\"}, {\"keyword\": \"phishing email\", \"group\": \"Informational/Content\", \"volume\": 1000, \"difficulty\": \"67\", \"intent\": \"Informational\", \"target_page\": \"Blog post\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"59\"}, {\"keyword\": \"ransomware\", \"group\": \"Informational/Content\", \"volume\": 2900, \"difficulty\": \"80\", \"intent\": \"Informational\", \"target_page\": \"Blog/Guide\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"48\"}, {\"keyword\": \"critical infrastructure cybersecurity\", \"group\": \"Informational/Content\", \"volume\": 50, \"difficulty\": \"21\", \"intent\": \"Info/Commercial\", \"target_page\": \"Blog post\", \"top_company\": \"Tesserent\", \"top_position\": \"28\"}, {\"keyword\": \"networking and network security\", \"group\": \"Informational/Content\", \"volume\": 590, \"difficulty\": \"31\", \"intent\": \"Informational\", \"target_page\": \"Blog/Guide\", \"top_company\": \"Tesserent\", \"top_position\": \"26\"}, {\"keyword\": \"superannuation cyber attack\", \"group\": \"Informational/Content\", \"volume\": 1300, \"difficulty\": \"27\", \"intent\": \"Informational\", \"target_page\": \"Trending blog\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"6\"}, {\"keyword\": \"cyber safety\", \"group\": \"Informational/Content\", \"volume\": 1600, \"difficulty\": \"32\", \"intent\": \"Informational\", \"target_page\": \"Blog/Guide\", \"top_company\": \"CyberCX\", \"top_position\": \"2\"}, {\"keyword\": \"email protection\", \"group\": \"Informational/Content\", \"volume\": 210, \"difficulty\": \"44\", \"intent\": \"Informational\", \"target_page\": \"New service page\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"38\"}, {\"keyword\": \"pen testing / pentest\", \"group\": \"Gap Opportunity\", \"volume\": 1600, \"difficulty\": \"49\", \"intent\": \"Informational\", \"target_page\": \"New service page\", \"top_company\": \"Tesserent\", \"top_position\": \"42\"}, {\"keyword\": \"MDR (managed detection response)\", \"group\": \"Gap Opportunity\", \"volume\": 1300, \"difficulty\": \"59\", \"intent\": \"Informational\", \"target_page\": \"New service page\", \"top_company\": \"Tesserent\", \"top_position\": \"27\"}, {\"keyword\": \"cyber security training\", \"group\": \"Gap Opportunity\", \"volume\": 1000, \"difficulty\": \"59\", \"intent\": \"Informational\", \"target_page\": \"New blog/page\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"5\"}, {\"keyword\": \"PCI DSS companies\", \"group\": \"Gap Opportunity\", \"volume\": 1600, \"difficulty\": \"47\", \"intent\": \"Informational\", \"target_page\": \"Blog post\", \"top_company\": \"Tesserent\", \"top_position\": \"37\"}, {\"keyword\": \"privileged access management\", \"group\": \"Gap Opportunity\", \"volume\": 880, \"difficulty\": \"44\", \"intent\": \"Informational\", \"target_page\": \"Blog post\", \"top_company\": \"Tesserent\", \"top_position\": \"70\"}, {\"keyword\": \"cyber security companies\", \"group\": \"Gap Opportunity\", \"volume\": 880, \"difficulty\": \"50\", \"intent\": \"Informational\", \"target_page\": \"Homepage SEO\", \"top_company\": \"Tesserent\", \"top_position\": \"3\"}, {\"keyword\": \"it security companies in australia\", \"group\": \"Gap Opportunity\", \"volume\": 720, \"difficulty\": \"46\", \"intent\": \"Informational\", \"target_page\": \"Homepage SEO\", \"top_company\": \"Tesserent\", \"top_position\": \"3\"}, {\"keyword\": \"OT security\", \"group\": \"Gap Opportunity\", \"volume\": 720, \"difficulty\": \"45\", \"intent\": \"Informational\", \"target_page\": \"Blog post\", \"top_company\": \"Tesserent\", \"top_position\": \"24\"}, {\"keyword\": \"super funds cyber attacks\", \"group\": \"Gap Opportunity\", \"volume\": 1300, \"difficulty\": \"24\", \"intent\": \"Informational\", \"target_page\": \"Trending blog\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"2\"}, {\"keyword\": \"report computer / electronic crime\", \"group\": \"Gap Opportunity\", \"volume\": 1000, \"difficulty\": \"31\", \"intent\": \"Informational\", \"target_page\": \"Blog post\", \"top_company\": \"Cyber Wardens\", \"top_position\": \"9\"}];\nreturn keywords.map(k => ({ json: k }));"
+      },
+      "id": "load-keywords",
+      "name": "Load Keywords",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -420,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://searxng:8080/search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $json.keyword }}"
+            },
+            {
+              "name": "format",
+              "value": "json"
+            },
+            {
+              "name": "engines",
+              "value": "google"
+            },
+            {
+              "name": "language",
+              "value": "en-AU"
+            },
+            {
+              "name": "safesearch",
+              "value": "0"
+            }
+          ]
+        },
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 1500
+            }
+          }
+        }
+      },
+      "id": "searxng-search",
+      "name": "SearXNG Search",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -200,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const domain = 'jypragroup.com.au';\nconst kw = $('Load Keywords').item.json;\nconst results = Array.isArray($json.results) ? $json.results : [];\nlet position = null, foundUrl = null;\nfor (let i = 0; i < results.length; i++) {\n  const u = String(results[i].url || '').toLowerCase();\n  if (u.includes(domain)) { position = i + 1; foundUrl = results[i].url; break; }\n}\nconst page = position === null ? null : Math.ceil(position / 10);\nconst onTarget = position !== null && page <= 2;\nconst isPriority = ['Quick Win', 'Commercial'].includes(kw.group);\nconst needs_brief = isPriority && (position === null || position > 20);\nconst brief_prompt = [\n  'You are an Australian SEO content strategist. Write a concise, practical on-page SEO content brief.',\n  'Use Australian English. Output plain text with short headed sections. No preamble.',\n  '',\n  'TARGET KEYWORD: ' + kw.keyword,\n  'SEARCH INTENT: ' + kw.intent,\n  'MONTHLY SEARCH VOLUME: ' + kw.volume,\n  'KEYWORD DIFFICULTY (0-100): ' + kw.difficulty,\n  'TARGET PAGE ON jypragroup.com.au: ' + kw.target_page,\n  'OUR CURRENT POSITION: ' + (position === null ? 'not found in results' : String(position)),\n  'TOP-RANKING COMPETITOR: ' + kw.top_company + ' at position ' + kw.top_position,\n  '',\n  'Produce these sections:',\n  '1) META: recommended H1, meta title (<=60 chars), meta description (<=155 chars).',\n  '2) OUTLINE: 5-8 H2/H3 headings that fully satisfy the search intent.',\n  '3) ENTITIES: 8-10 semantically related terms to include.',\n  '4) LINKS: 3 internal-link ideas + 1 type of authoritative external reference.',\n  '5) INTRO: a draft intro paragraph (<=90 words) using the keyword naturally once.'\n].join('\\n');\nreturn { json: {\n  keyword: kw.keyword, group: kw.group, volume: kw.volume, difficulty: kw.difficulty,\n  intent: kw.intent, target_page: kw.target_page, top_company: kw.top_company,\n  top_position: kw.top_position, checked_at: new Date().toISOString(), domain,\n  position, page, found_url: foundUrl, on_page_1_or_2: onTarget, needs_brief, brief_prompt\n} };",
+        "mode": "runOnceForEachItem"
+      },
+      "id": "parse-rank",
+      "name": "Parse Rank",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        20,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "__GOOGLE_SHEET_ID__",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "id",
+          "cachedResultName": "RankLog"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {}
+      },
+      "id": "append-rank-log",
+      "name": "Append Rank Log",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        260,
+        120
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_ME",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all().map(i => i.json);\nconst total = items.length;\nconst ranking = items.filter(i => i.position !== null);\nconst onP12 = items.filter(i => i.on_page_1_or_2);\nconst notRanking = items.filter(i => i.position === null);\nconst briefs = items.filter(i => i.needs_brief);\nconst rows = items\n  .slice()\n  .sort((a, b) => (a.position == null ? 999 : a.position) - (b.position == null ? 999 : b.position))\n  .map(i => '<tr><td>' + i.keyword + '</td><td>' + i.group + '</td><td>' +\n    (i.position == null ? '&mdash;' : i.position) + '</td><td>' +\n    (i.on_page_1_or_2 ? 'yes' : '') + '</td><td>' + i.top_company + ' (' + i.top_position + ')</td></tr>')\n  .join('');\nconst html = '<h2>Jypra SEO rank report &mdash; ' + new Date().toLocaleDateString('en-AU') + '</h2>' +\n  '<p>Domain tracked: <b>jypragroup.com.au</b></p>' +\n  '<ul>' +\n  '<li>Keywords tracked: ' + total + '</li>' +\n  '<li>Ranking somewhere in results: ' + ranking.length + '</li>' +\n  '<li>On page 1 or 2 (the goal): <b>' + onP12.length + '</b></li>' +\n  '<li>Not found in results yet: ' + notRanking.length + '</li>' +\n  '<li>Content briefs generated this run: ' + briefs.length + '</li>' +\n  '</ul>' +\n  '<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\" style=\"border-collapse:collapse;font-family:Calibri,Arial,sans-serif;font-size:13px\">' +\n  '<tr style=\"background:#2E5B8F;color:#fff\"><th>Keyword</th><th>Group</th><th>Our position</th><th>Pg 1/2</th><th>Top competitor</th></tr>' +\n  rows + '</table>';\nreturn { json: {\n  generated_at: new Date().toISOString(), total, ranking: ranking.length,\n  on_page_1_or_2: onP12.length, not_ranking: notRanking.length, briefs: briefs.length,\n  email_html: html\n} };"
+      },
+      "id": "build-summary",
+      "name": "Build Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cond-needs-brief",
+              "leftValue": "={{ $json.needs_brief }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "needs-content-brief",
+      "name": "Needs Content Brief?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        260,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.replicate.com/v1/models/meta/meta-llama-3-8b-instruct/predictions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Prefer",
+              "value": "wait"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { \"input\": { \"prompt\": $json.brief_prompt, \"max_tokens\": 900 } } }}",
+        "options": {}
+      },
+      "id": "replicate-generate-brief",
+      "name": "Replicate: Generate Brief",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        500,
+        480
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_ME",
+          "name": "Replicate API Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const src = $('Parse Rank').item.json;\nlet out = $json.output;\nif (Array.isArray(out)) out = out.join('');\nreturn { json: {\n  keyword: src.keyword, group: src.group, target_page: src.target_page,\n  intent: src.intent, our_position: src.position, competitor: src.top_company,\n  competitor_position: src.top_position, generated_at: new Date().toISOString(),\n  content_brief: out || ''\n} };",
+        "mode": "runOnceForEachItem"
+      },
+      "id": "format-brief",
+      "name": "Format Brief",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "__GOOGLE_SHEET_ID__",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=1",
+          "mode": "id",
+          "cachedResultName": "ContentBriefs"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {}
+      },
+      "id": "append-content-briefs",
+      "name": "Append Content Briefs",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        940,
+        480
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_ME",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "__LEAD_EMAIL__",
+        "subject": "={{ 'Jypra SEO rank report - ' + $now.toFormat('dd LLL yyyy') }}",
+        "emailType": "html",
+        "message": "={{ $json.email_html }}",
+        "options": {}
+      },
+      "id": "email-lead",
+      "name": "Email Lead",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        500,
+        300
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REPLACE_ME",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Load Keywords",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Keywords": {
+      "main": [
+        [
+          {
+            "node": "SearXNG Search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SearXNG Search": {
+      "main": [
+        [
+          {
+            "node": "Parse Rank",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Rank": {
+      "main": [
+        [
+          {
+            "node": "Append Rank Log",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Build Summary",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Needs Content Brief?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Summary": {
+      "main": [
+        [
+          {
+            "node": "Email Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Needs Content Brief?": {
+      "main": [
+        [
+          {
+            "node": "Replicate: Generate Brief",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Replicate: Generate Brief": {
+      "main": [
+        [
+          {
+            "node": "Format Brief",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Brief": {
+      "main": [
+        [
+          {
+            "node": "Append Content Briefs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "pinData": {},
+  "meta": {
+    "templatecredsSetupCompleted": false
+  }
+}
